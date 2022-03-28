@@ -9,4 +9,4 @@ If the distance is greater than 21, the LED RGB will light GREEN LED.
 
 The distance is in cm and it will be shown to the LCD 16x2
 
-<img src="https://ibb.co/Prg0BSk">
+<a href="https://ibb.co/Prg0BSk"><img src="https://i.ibb.co/hgVwpq0/Activity-6-Ultrasonic-Sensor-LCD-Screen-LED-Light-and-Piezo.png" alt="Activity-6-Ultrasonic-Sensor-LCD-Screen-LED-Light-and-Piezo" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
