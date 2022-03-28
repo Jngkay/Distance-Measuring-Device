@@ -1,0 +1,74 @@
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+const int pingPin = 9;
+int red = 8;
+int blue = 7;
+int green = 6;
+int piezoBuzzer = 10;
+
+void setup() {
+  lcd.begin(16, 2);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+  pinMode(blue,OUTPUT);
+  pinMode(piezoBuzzer, OUTPUT);
+}
+
+void loop() {
+  
+  long duration, inches, cm;
+  pinMode(pingPin, OUTPUT);
+  digitalWrite(pingPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(pingPin, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(pingPin, LOW);
+  pinMode(pingPin, INPUT);
+  duration = pulseIn(pingPin, HIGH);
+
+  cm = microsecondsToCentimeters(duration);
+  
+  if(cm <=10)
+  {
+	digitalWrite(red,HIGH);
+    digitalWrite(blue,LOW);
+    digitalWrite(green,LOW);
+    tone(piezoBuzzer, 1000);
+  	delay(1000);       
+  	noTone(piezoBuzzer);     
+  	delay(500); 
+  }
+  else if(cm >=11 && cm <=20)
+  {
+    //Yellow
+    digitalWrite(green,HIGH);
+    digitalWrite(red,HIGH);
+    digitalWrite(blue,LOW);
+    delay(500); 
+  }
+  else if(cm >=21)
+  {
+	digitalWrite(green,HIGH);
+    digitalWrite(blue,LOW);
+    digitalWrite(red,LOW);
+    delay(500); 
+  }
+  lcd.setCursor(0,0);
+  lcd.print("Distance: ");
+  lcd.setCursor(0,1);
+  lcd.print(cm);
+  lcd.print("cm");
+  lcd.println();
+  delay(100);
+
+}
+
+  
+long microsecondsToInches(long microseconds) {
+  return microseconds / 74 / 2;
+}
+
+long microsecondsToCentimeters(long microseconds) {
+  return microseconds / 29 / 2;
+}
