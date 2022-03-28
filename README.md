@@ -8,3 +8,5 @@ If the distance is greater than or equal to 11 and less than or equal to 20, the
 If the distance is greater than 21, the LED RGB will light GREEN LED. 
 
 The distance is in cm and it will be shown to the LCD 16x2
+
+<img src="https://ibb.co/Prg0BSk">
